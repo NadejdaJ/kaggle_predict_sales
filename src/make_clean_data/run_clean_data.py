@@ -31,4 +31,16 @@ train_wo_outliers = remove_outliers(raw_train)
 # ===============================================================
 item_categories = group_item_categories(raw_item_categories)
 items = update_items_with_new_categories(raw_items, item_categories)
-print(items)
+
+# Add rare tag to items
+items = items.append(pd.DataFrame({COLUMN_NAMES["item_name"]: ["Rare"],
+                                   COLUMN_NAMES["item_id"]: []}))
+
+rare_df = train_wo_outliers.groupby("item_id")["date_block_num"].count().\
+    reset_index().rename(columns={"date_block_num": "count"})
+rare_df["count_perc"] = rare_df["count"] / len(train_wo_outliers.index) * 100
+
+rare_df["tag"] = rare_df["count_perc"] < rare_cutoff
+print(rare_df)
+print(rare_df["tag"].sum())
+print(rare_df.describe())
