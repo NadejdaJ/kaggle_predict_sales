@@ -51,3 +51,18 @@ COLUMN_NAMES = {
 max_item_price = 2124  # Q1 = 249.0    Q3 = 999.0   k = 1.5
 max_item_count = 650  # Q1 = 1   Q3 = 1   k = 1.5
 rare_cutoff = 1e-4
+
+# ===============================================================
+# Grouping categories
+# ===============================================================
+groups_dict = {"Игры": "games",
+               "Карты оплаты": "payment_card",
+               "Кино": "movies",
+               "Книги": "books",
+               "Музыка": "music",
+               "Подарки": "gifts",
+               "Программы": "programs",
+               "Служебные": "service",
+               "Чистые носители": "storage",
+               "Игровые": "consoles",
+               "Аксессуары": "accessories"}

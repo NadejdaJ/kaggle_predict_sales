@@ -58,4 +58,4 @@ train_wo_outliers["shop_open"] = False
 train_wo_outliers.loc[train_wo_outliers["shop_id"].isin(open_shops), "shop_open"] = True
 print(train_wo_outliers)
 
-# Combine
+# Combine shop_id, item_id and outdated = False, shop_open = True

@@ -53,28 +53,11 @@ def remove_outliers(df):
 
 
 def groupings(row):
-    if "Игры" in row:
-        return "games"
-    elif "Карты оплаты" in row:
-        return "payment_card"
-    elif "Кино" in row:
-        return "movies"
-    elif "Книги" in row:
-        return "books"
-    elif "Музыка" in row:
-        return "music"
-    elif "Подарки" in row:
-        return "gifts"
-    elif "Программы" in row:
-        return "programs"
-    elif "Служебные" in row:
-        return "service"
-    elif "Чистые носители" in row:
-        return "storage"
-    elif "Игровые" in row:
-        return "consoles"
-    elif "Аксессуары" in row:
-        return "accessories"
+    keys = list(groups_dict.keys())
+    found_match = [key for key in keys if key in row]
+
+    if found_match:
+        return groups_dict[found_match[0]]
     else:
         return row
 
@@ -116,5 +99,8 @@ def update_items_with_new_categories(df_items, df_categories):
                         right_on="original_category_id", how="left")
     df.rename(columns={COLUMN_NAMES["item_category_id"]+"_y": COLUMN_NAMES["item_category_id"]},
               inplace=True)
-    return df[[COLUMN_NAMES["item_name"], COLUMN_NAMES["item_id"],
-               COLUMN_NAMES["item_category_name"], COLUMN_NAMES["item_category_id"]]]
+
+    out = df[[COLUMN_NAMES["item_name"], COLUMN_NAMES["item_id"],
+              COLUMN_NAMES["item_category_name"],
+              COLUMN_NAMES["item_category_id"]]].drop_duplicates().reset_index(drop=True)
+    return out
