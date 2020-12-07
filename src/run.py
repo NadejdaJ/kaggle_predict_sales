@@ -12,7 +12,10 @@ Email address: nadejda@kth.se
 """
 
 # Clean data and save outputs in interim folder
+print("=" * 60)
+print("Running cleaning script\n")
 from src.make_clean_data.run_clean_data import *
+print("=" * 60)
+print()
 
-
-
+print("DONE!!!")
