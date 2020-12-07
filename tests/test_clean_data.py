@@ -1,4 +1,5 @@
 import unittest
+import numpy as np
 from pandas.testing import assert_frame_equal
 from src.make_clean_data.clean_data_functions import *
 
@@ -57,6 +58,13 @@ class MyCleanDataTestCase(unittest.TestCase):
                                "item_category_id": [0, 1, 2, 0, 2]})
 
         assert_frame_equal(df_out, df_exp)
+
+    def test_extract_city(self):
+        df_in = pd.DataFrame({COLUMN_NAMES["shop_name"]: [np.nan, "Krym", "Химки", "Омск"]})
+        expected = pd.DataFrame({COLUMN_NAMES["shop_name"]: [np.nan, "Krym", "Химки", "Омск"],
+                                 COLUMN_NAMES["city_name"]: [np.nan, "Krym", "moscow", "omsk"]})
+        df_out = extract_city(df_in, COLUMN_NAMES["shop_name"])
+        assert_frame_equal(expected, df_out)
 
 
 if __name__ == '__main__':
