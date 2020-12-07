@@ -1,5 +1,6 @@
 data
 venv
+*__py*
 .DS_Store
 .idea
 .notebooks
