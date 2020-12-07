@@ -58,7 +58,8 @@ train_wo_outliers["shop_open"] = False
 train_wo_outliers.loc[train_wo_outliers["shop_id"].isin(open_shops), "shop_open"] = True
 print(train_wo_outliers)
 
-proc_shops = raw_shops.copy()
-proc_shops["city_name"] = raw_shops["shop_name"].str.strip().str.split(" ").str[0]
+# Extract city names for
+proc_shops = extract_city(raw_shops, COLUMN_NAMES["shop_name"])
 print(proc_shops)
+
 # Combine shop_id, item_id and outdated = False, shop_open = True

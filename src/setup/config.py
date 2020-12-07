@@ -43,7 +43,8 @@ COLUMN_NAMES = {
     "item_category_name": "item_category_name",
     "item_name": "item_name",
     "date": "date",
-    "shop_name": "shop_name"
+    "shop_name": "shop_name",
+    "city_name": "city_name",
 }
 # ===============================================================
 # Outliers from data exploration
@@ -84,7 +85,7 @@ geo_cities = {
     "Курск": "kursk",
     "Москва": "moscow",
     "Мытищи": "moscow",
-    "Новгород": "novgorod",
+    "ННовгород": "novgorod",
     "Новосибирск": "novosibirsk",
     "Омск": "omsk",
     "РостовНаДону": "rostovnadonu",

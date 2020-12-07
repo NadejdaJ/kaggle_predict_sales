@@ -104,3 +104,20 @@ def update_items_with_new_categories(df_items, df_categories):
               COLUMN_NAMES["item_category_name"],
               COLUMN_NAMES["item_category_id"]]].drop_duplicates().reset_index(drop=True)
     return out
+
+
+def extract_city(df, col):
+    """
+    This function extract city name from the shop name and maps it according to dictionary as defined in config
+    :param df: raw shops dataframe
+    :param col: column name for shop_name
+    :return: processed dataframe with extracted city names
+    """
+    out = df.copy()
+    out["tmp"] = df[col].str.strip().str.split(" ").str[0]
+    out["tmp"].replace({r"[.,!?]+": ""}, inplace=True, regex=True)
+    out[COLUMN_NAMES["city_name"]] = out["tmp"].map(geo_cities)
+    out.loc[pd.isnull(out[COLUMN_NAMES["city_name"]]), "city_name"] = \
+        out.loc[pd.isnull(out[COLUMN_NAMES["city_name"]])]["tmp"]
+    out.drop("tmp", axis=1, inplace=True)
+    return out
