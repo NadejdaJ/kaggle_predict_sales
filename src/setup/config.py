@@ -33,6 +33,10 @@ raw_sales_train_name = "sales_train.csv"
 raw_shops_name = "shops.csv"
 raw_test_name = "test.csv"
 
+interim_item_categories_name = "clean_item_categories.csv"
+interim_items_name = "clean_items.csv"
+interim_sales_train_name = "clean_train.csv"
+interim_shops_name = "clean_shops.csv"
 # ===============================================================
 # Outliers from data exploration
 # ===============================================================

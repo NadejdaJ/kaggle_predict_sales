@@ -83,6 +83,7 @@ print("\nProcessed shops dataset")
 # Save clean results
 # ===============================================================
 # Save processed files into interim data folder
-train_wo_outliers.to_csv(interim_data_path + "clean_train.csv")
-proc_shops.to_csv(interim_data_path + "clean_shops.csv")
-items.to_csv(interim_data_path + "clean_items.csv")
+train_wo_outliers.to_csv(interim_data_path + interim_sales_train_name, index=False)
+proc_shops.to_csv(interim_data_path + interim_shops_name, index=False)
+items.to_csv(interim_data_path + interim_items_name, index=False)
+item_categories.to_csv(interim_data_path + interim_item_categories_name, index=False)
