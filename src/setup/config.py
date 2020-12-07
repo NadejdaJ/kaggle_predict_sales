@@ -16,10 +16,13 @@ import os
 # ===============================================================
 # Defining paths
 # ===============================================================
-raw_data_path = "./data/raw/"
-interim_data_path = "./data/interim/"
-processed_data_path = "./data/processed/"
-model_path = "./data/model/"
+base_path = os.path.dirname(os.path.abspath(__file__))
+base_path = base_path.split("src")[0]
+
+raw_data_path = base_path + "data/raw/"
+interim_data_path = base_path + "data/interim/"
+processed_data_path = base_path + "data/processed/"
+model_path = base_path + "data/model/"
 
 # ===============================================================
 # Defining filenames
@@ -68,6 +71,14 @@ groups_dict = {"Игры": "games",
                "Игровые": "consoles",
                "Аксессуары": "accessories"}
 
+# ===============================================================
+# Definition of recent! How many months without sales mean that product is outdated?
+# ===============================================================
+delta_months = 6
+
+# ===============================================================
+# Grouping cities
+# ===============================================================
 geo_cities = {
     "Балашиха": "moscow",
     "Волжский": "vologda",
